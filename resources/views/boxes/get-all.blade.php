@@ -13,7 +13,7 @@
         <tbody>
             @foreach ($boxes as $box)
                 <tr>
-                    <td class="px-3 py-1"><a class="text-cyan-600 underline-offset-1" href="{{ route('boxes.getOne', ['id' => $box->id]) }}">{{ $box->id }}</a></td>
+                    <td class="px-3 py-1"><a class="h-full text-blue-600 hover:underline" href="{{ route('boxes.getOne', ['id' => $box->id]) }}">{{ $box->id }}</a></td>
                     <td class="px-3 py-1">{{ $box->adress }}</td>
                     <td class="px-3 py-1">{{ $box->number }}</td>
                     <td class="px-3 py-1">{{ $box->size }}</td>
