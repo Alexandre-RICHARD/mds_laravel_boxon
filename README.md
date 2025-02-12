@@ -1,66 +1,183 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# TP à réaliser pour l'évaluation
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A faire en individuel obligatoirement 😇
 
-## About Laravel
+**Le but n'est pas forcément de tout terminer**, mais d'aller le plus loin possible pour chacun.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Le sujet
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Vous allez réaliser une application de gestion de locations de box de stockage à destination des propriétaires. Les locataires n'ont aucune connaissance de cet outil 😶‍🌫️ .
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Les fonctionnalités
 
-## Learning Laravel
+- Authentification
+- Gestion de box (chaque compte utilisateur (= proprio de box) peut gérer ses propres box)
+- Gestion de locataires (nom, tel,mail, adresse, compte banciare...)
+- Gestion de modèles de contrats
+- Gestion des contrats automatisée : l'utilisateur peut créer un modèle de contrat, en y incluant des variables (nom, prenom, adresse, etc...) qui seront par la suite automatiquement remplacées lors de la constitution d'un contrat.
+- Gestion des suivis de paiement au mois par mois (cases à cocher)
+- Gestion des impots : en fonction des structures de société, perso ou autre, implémenter les calculs des impots et recracher les montants que vous devrez renseigner dans les cases de votre déclaration d'impôts 😁
+- Gestion des factures
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Les petits plus
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Export du contrat en PDF 😁 (merci kévin)
+- Export des impôts en PDF (merci Yann)
+- Export Excel comptable des paiements reçu
+- Export des clients au format CSV
+- Envoi automatique par mail de la facture 🐥
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Les impératifs
 
-## Laravel Sponsors
+- GIT & GITHUB (repo public)
+- Issues pour chaque chose réalisée
+- Milestones
+- Branches à gogo 🌴
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Les livrables finaux
 
-### Premium Partners
+- Code source
+- Script de déploiement automatique (CI/CD)
+- URL d'accès à votre projet
+- Readme - qui inclura des logs de connexion par défaut pour tester l'application !
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-----------------
+-----------------
+-----------------
+-----------------
 
-## Contributing
+# Etapes de réalisation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Initialisation de Laravel
+2. Mise en place de l'authentification (cf breeze : https://laravel.com/docs/11.x/starter-kits#laravel-breeze)
 
-## Code of Conduct
+-----------------
+-----------------
+-----------------
+-----------------
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Support de cours
+Présentation de Laravel et bases
 
-## Security Vulnerabilities
+## Artisan
+Artisan est une interface utilisable en ligne de commande (CLI - Command Line Interface).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Utilisation de base
+Artisan est basé sur PHP, et nécessite donc l'utilisation de la commande "PHP" pour s'en servir.
+Toute commande artisan débute donc par "php artisan".
+La commande "php artisan" seule, affichera l'ensemble des commandes disponibles proposées par Artisan.
 
-## License
+### Commandes usuelles
+- **Création de fichiers** : Artisan nous permet de générer des fichiers a l'aide de la commande `php artisan make:...`. On doit ensuite interposer le symbole ":", puis spécifier le type de fichier que l'on veut créer.
+    - `php artisan make:model Nom`
+    - `php artisan make:controller NomController`
+    - `php artisan make:migration create_blog_table`
+- gestion de la base de données : Artisan nous permet de créer, modifier ou supprimer des tables au sein d'une base de données. Il utilise les fichiers de migration, mais n'exécute chaque migration, que sur les fichiers qui n'ont pas déjà été migrés. Pour cela, il faut utiliser la commande "migrate".
+    - `php artisan migrate` : déclenche les migrations
+    - `php artisan migrate:fresh` : reset la BDD puis déclenche les migrations
+    - `php artisan migrate:fresh --seed` : reset la BDD puis déclenche les migrations et les seeders
+- gestion du cache : Artisan nous permet de nettoyer le cache de manière rapide et simple avec la commande `php artisan cache:clear`.
+- Affichage des routes : Artisan nous permet d'afficher les routes existantes au sein de l'application avec la commande `php artisan route:list`.
+- publication des vendors : Artisan nous permet de publier les dépendances et librairies utilisées au sein d'un projet Laravel. Ceci nous permettant de modifier ces librairies et dépendances sans crainte de voir le travail perdue pour cause de mise à jour. la commande étant `php artisan vendor:publish`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Architecture de Laravel
+|- /app  
+|----- /Console  
+|--------- /Commands : Dossier qui contient toutes les commandes personnalisées créées.  
+|----- /Exceptions  
+|----- /Http  
+|--------- /Controller : Dossier qui contiendra l'ensembe des controleurs  
+|------------- controller.php : Controleur de base du framework  
+|--------- /Middleware : Dossier qui contiendra l'ensemble des middleware  
+|----- /Providers
+|----- /Models
+|--------- User.php : Modèle utilisateur généré automatiquement par Laravel  
+|- /bootstrap  
+|- /config : Contient les fichiers de configuration de l'application  
+|- /database  
+|----- /factories : Contient les fichier de Factory
+|----- /migrations : Contient les fichiers de migrations qui permettent de créer, modifier ou   supprimer une ou plusieurs table(s)  
+|----- /seeders : Contient les fichier de Seeder
+|- /public : dossier d'entrée de l'application  
+|----- index.php : point d'entrée de l'application  
+|- /ressources  
+|----- /lang : dossier qui contient les fichiers de traductions de l'application  
+|----- /views : dossier qui contient l'ensemble des vues du projet  
+|- /routes
+|----- web.php : fichier pour déclarer les routes relatives à une application web.  
+|- /storage  
+|- /tests : dossier contenant les tests unitaires & fonctionnels  
+|- /vendor : Contient l'ensemble des dépendances du projet (géré par Composer)  
+|- composer.json => le fichier qui permet de lister les dépendances  
+|- .env => fichier de configuration de l'application  
+
+## Etapes d'un CRUD
+1. Création d'une table en base de données :
+    - Création d'un ou plusieurs fichier(s) de migration avec la commande `php artisan make:migration [NOM_DU_FICHIER_DE_MIGRATION]`
+    - Migration des fichiers grâce à la commande `php artisan migrate`
+2. Création du modèle en lien avec la table créée en base de données :
+    - Création du fichier avec la commande `php artisan make:model [NOM_DU_MODEL]`
+    - Renseignement du nom de la table en lien avec le nouveau modèle grâce à l'attribut : `protected $table="[NOM_DE_LA_TABLE]";`
+    - Renseignement des champs de la table qui peuvent être modifiés grâce au modèle via le tableau unidimensionnel contenu dans l'attribut `protected $fillable=[TABLEAU_DES_CHAMPS]`
+3. (Optionnel mais recommandé) Création des Factory et implémentation des seeders 
+    - Création du factory avec la commande `php artisan make:factory [NOM_DU_FACTORY]`
+    - implémentation du tableau contenu dans le return du factory grâce à la librairie faker (https://fakerphp.org/)
+    - Mise en place de l'exécution du factory dans le fichier `DatabaseSeeder` en spécifiant le nombre de création que vous souhaitez : `Blog::factory([NOMBRE_SOUHAITE])->create();`
+4. Création d'une ou plusieurs route(s)
+    - Ajout de la / des route(s) dans le fichier `/routes/web.php`. Renseignement de l'URL attendue, du contrôleur ainsi que de sa méthode qui doit être appelée au matching de l'URL, puis définition d'un nom sur la route pour facilité son utilisation a posteriori.
+5. Création du contrôleur
+    - Création du fichier avec la commande `php artisan make:controller [NOM_DU_CONTROLLER]`
+    - Définition de la / des méthode(s) en lien avec les routes précédemment créées
+    - Penser à retourner les vues ou les redirects à l'issue de chaque méthode du controleur
+6. Création des vues
+    - Pour chaque vue nécessaire, créer un fichier avec l'extension `.blade.php` dans le dossier `/ressources/views/`. Nommer ce fichier de telle sorte à pouvoir l'appeler simplement dans les méthodes des contrôleurs.
+
+## Relations entre entitées
+
+1. Ajouter une foreign key dans votre base de données pour lier une table "A" à une table "B". Ajouter donc un champs "b_id" dans la table "A". Ensuite, déclarer votre foreign dans la migration grâce à : 
+
+    ```
+    # b_id est le nom de la colonne créée dans la table représentant le lien vers l'autre table
+    # unsigned() permet d'éviter de nombreuses erreurs laravel
+    # nullable() vous permet de ne pas rendre obligatoire le remplissage de ce champs.
+    $table->bigInteger('b_id')->unsigned()->nullable();
+
+    # le foreign('b_id') indique que c'est le champs 'b_id', créé juste au dessus, qui servira
+    # de lien avec l'autre table.
+    # references('id)->on('b') signifie que le champs 'b_id' va avoir comme référence (le champs qui va le lié à l'autre table) la colonne 'id', de la table 'b'
+    $table->foreign('b_id') 
+        ->references('id')
+        ->on('b');
+    ```
+
+2. Déclarer cette relation dans vos models.
+    - Ajouter le champs "b_id" dans l'attribut fillable du model "A"
+    - déclarer dans le model "A", la relation avec le model "B", grâce au code suivant : 
+    ```
+        # le nom de la méthode est arbitraire. Vous pouvez mettre ce que vous souhaitez, cependant c'est ce nom de méthode que vous devrez utiliser avec l'utilisation du "with" plus bas.
+        public function b()
+        {
+            # BelongsTo doit prendre en premier paramètre le nom du model A, puis en second paramètre, le nom du champs dans le modèle courant lié avec le model A grâce à sa foreign key
+            return $this->belongsTo(B::class, "b_id");
+        }
+    ```
+    - Vous pouvez déclarer la fonction inverse dans l'autre model pour pouvoir accéder au "with" depuis l'autre model : 
+    ```
+        # le nom de la méthode est arbitraire. Vous pouvez mettre ce que vous souhaitez, cependant c'est ce nom de méthode que vous devrez utiliser avec l'utilisation du "with" plus bas.
+        public function as()
+        {
+            # la relation inverse se déclare grace a la méthode "hasMany", qui ne prend cette fois en paramètre, que le nom du model "A"
+            return $this->hasMany(A::class);
+        }
+    ```
+
+3. Vous pouvez maintenant vous servir des méthodes "as" et "b" respectivement des modèles "B" et "A" grâce à la méthode "with" d'Eloquent (désormais votre ORM préféré).
+Pour cela, vous pouvez par exemple faire l'une des requêtes suivantes : 
+
+```
+    # Renverra a la fois le model A, en y incluant dans les relations, l'objet "B" correspondant en base de données
+    $obj = A::where('id', $id)->with('b')->first();
+
+    # Renverra a la fois le model B, en y incluant dans les relations, le ou les objets "A" correspondant(s) en base de données
+    $obj = B::where('id', $id)->with('as')->first();
+```
