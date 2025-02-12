@@ -16,10 +16,27 @@ class BoxesController extends Controller
      */
     public function getAll(Request $request): View
     {
-        $boxes = Boxes::all();
+        $boxes = Boxes::where("user_id", Auth::id())->get();
 
-        return view('boxes.getAll', [
+        return view('boxes.get-all', [
             'boxes' => $boxes,
+            'user' => $request->user(),
+        ]);
+    }
+
+    /**
+     * Display one box that user can see.
+     */
+    public function getOne(Request $request): View
+    {
+        $id = $request->route('id');
+        $box = Boxes::where([
+            ['id', '=', $id],
+            ['user_id', '=', Auth::id()],
+        ])->firstOrFail();
+
+        return view('boxes.get-one', [
+            'box' => $box,
             'user' => $request->user(),
         ]);
     }

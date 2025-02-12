@@ -17,9 +17,10 @@ class BoxesFactory extends Factory
     public function definition(): array
     {
         return [
-            'adress' => $this->faker->address(),
-            'number' => $this->faker->unique()->bothify('??-###'),
-            'size' => $this->faker->randomFloat(2, 1, 100), 
+            'user_id' => random_int(1, 7),
+            'adress' => fake()->name(),
+            'number' => fake()->unique()->bothify('###'),
+            'size' => fake()->randomFloat(2, 1, 100), 
         ];
     }
 }
