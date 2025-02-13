@@ -14,5 +14,6 @@ class Boxes extends Model
         'adress',
         'number',
         'size',
+        'user_id',
     ];
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Boxes;
+use Illuminate\Support\Facades\Log;
 
 class BoxesController extends Controller
 {
@@ -39,5 +40,26 @@ class BoxesController extends Controller
             'box' => $box,
             'user' => $request->user(),
         ]);
+    }
+
+    /**
+     * Create one box
+    */    
+    public function create(Request $request)
+    {
+        $validatedData = $request->validate([
+            'adress' => 'required|string|max:255',
+            'number' => 'required|digits:3',
+            'size' => 'required|numeric|between:0,99999.99',
+        ]);
+
+        $userId = Auth::id();
+
+        $validatedData['user_id'] = $userId;
+
+    
+        Boxes::create($validatedData);
+    
+        return redirect()->back()->with('success', 'Box ajoutée avec succès !');
     }
 }
