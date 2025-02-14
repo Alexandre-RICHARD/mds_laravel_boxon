@@ -18,6 +18,3 @@ jobs:
           cd ${{ secrets.PROJECT_PATH }}
           git pull
           php artisan migrate
-          php artisan cache:clear
-          php artisan views:clear
-          php artisan config:clear
