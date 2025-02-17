@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class BoxesFactory extends Factory
+class ContractModelsFactory extends Factory
 {
-
-    protected $model = \App\Models\Boxes::class;
+    protected $model = \App\Models\ContractModels::class;
     /**
      * Define the model's default state.
      *
@@ -20,9 +19,8 @@ class BoxesFactory extends Factory
     public function definition(): array
     {
         return [
-            'adress' => fake()->address(),
-            'number' => fake()->unique()->bothify('###'),
-            'size' => fake()->randomFloat(2, 1, 100), 
+            'name' => fake()->userName(),
+            'content' => fake()->text(200),
             'user_id' => User::pluck('id')->random(),
         ];
     }
