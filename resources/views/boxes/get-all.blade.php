@@ -1,47 +1,47 @@
 <x-custom-layout title="Liste des Boxes">
-<section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Ajouter une Box') }}
-        </h2>
-
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Remplissez le formulaire ci-dessous pour ajouter une nouvelle box.") }}
-        </p>
-    </header>
-
-    <form method="post" action="{{ route('boxes.create') }}" class="mt-6 space-y-6">
-        @csrf
-
-        <div>
-            <x-input-label for="adress" :value="__('Adresse')" />
-            <x-text-input id="adress" name="adress" type="text" class="mt-1 block w-full" required />
-            <x-input-error class="mt-2" :messages="$errors->get('adress')" />
-        </div>
-
-        <div>
-            <x-input-label for="number" :value="__('Numéro')" />
-            <x-text-input id="number" name="number" type="text" pattern="\d{3}" maxlength="3" class="mt-1 block w-full" required placeholder="Ex: 123" />
-            <x-input-error class="mt-2" :messages="$errors->get('number')" />
-        </div>
-
-        <div>
-            <x-input-label for="size" :value="__('Taille')" />
-            <x-text-input id="size" name="size" type="number" min="0" max="99999" step="0.01" class="mt-1 block w-full" required placeholder="Ex: 12.34" />
-            <x-input-error class="mt-2" :messages="$errors->get('size')" />
-        </div>
-
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Ajouter la Box') }}</x-primary-button>
-
-            @if (session('status') === 'box-added')
-                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600">
-                    {{ __('Box ajoutée avec succès.') }}
-                </p>
-            @endif
-        </div>
-    </form>
-</section>
+    <section>
+        <header>
+            <h2 class="text-lg font-medium text-gray-900">
+                {{ __('Ajouter une Box') }}
+            </h2>
+    
+            <p class="mt-1 text-sm text-gray-600">
+                {{ __("Remplissez le formulaire ci-dessous pour ajouter une nouvelle box.") }}
+            </p>
+        </header>
+    
+        <form method="post" action="{{ route('boxes.create') }}" class="mt-6 space-y-6">
+            @csrf
+    
+            <div>
+                <x-input-label for="adress" :value="__('Adresse')" />
+                <x-text-input id="adress" name="adress" type="text" class="mt-1 block w-full" required />
+                <x-input-error class="mt-2" :messages="$errors->get('adress')" />
+            </div>
+    
+            <div>
+                <x-input-label for="number" :value="__('Numéro')" />
+                <x-text-input id="number" name="number" type="text" pattern="\d{3}" maxlength="3" class="mt-1 block w-full" required placeholder="Ex: 123" />
+                <x-input-error class="mt-2" :messages="$errors->get('number')" />
+            </div>
+    
+            <div>
+                <x-input-label for="size" :value="__('Taille')" />
+                <x-text-input id="size" name="size" type="number" min="0" max="99999" step="0.01" class="mt-1 block w-full" required placeholder="Ex: 12.34" />
+                <x-input-error class="mt-2" :messages="$errors->get('size')" />
+            </div>
+    
+            <div class="flex items-center gap-4">
+                <x-primary-button>{{ __('Ajouter la Box') }}</x-primary-button>
+    
+                @if (session('status') === 'box-added')
+                    <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600">
+                        {{ __('Box ajoutée avec succès.') }}
+                    </p>
+                @endif
+            </div>
+        </form>
+    </section>
 
     <section class="mt-6">
         <header>

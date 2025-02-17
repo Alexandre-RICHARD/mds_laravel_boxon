@@ -19,7 +19,8 @@
             @include('layouts.navigation', [
                 'links' => [
                     ['route' => 'dashboard', 'text' => 'Dashboard'],
-                    ['route' => 'boxes.getAll', 'text' => 'Mes boxes']
+                    ['route' => 'boxes.getAll', 'text' => 'Mes boxes'],
+                    ['route' => 'tenants.getAll', 'text' => 'Mes locataires'],
                 ]
             ])
 
