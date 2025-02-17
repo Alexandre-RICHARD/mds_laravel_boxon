@@ -62,4 +62,27 @@ class BoxesController extends Controller
     
         return redirect()->back()->with('success', 'Box ajoutée avec succès !');
     }
+
+    /**
+     * Update one box
+    */    
+    public function update(Request $request)
+    {
+        $boxToUpdateId = $request->route('id');;
+        $boxToUpdate = Boxes::findOrFail($boxToUpdateId);
+
+        if ($boxToUpdate->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Vous n\'êtes pas autorisé à modifier cette box.');
+        }
+        
+        $validatedData = $request->validate([
+            'adress' => 'required|string|max:255',
+            'number' => 'required|digits:3',
+            'size' => 'required|numeric|between:0,99999.99',
+        ]);
+        
+        $boxToUpdate->update($validatedData);
+
+        return redirect()->back()->with('success', 'Box mise à jour avec succès !');
+    }
 }
