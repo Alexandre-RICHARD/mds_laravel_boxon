@@ -16,7 +16,13 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            @include('layouts.navigation', [
+                'links' => [
+                    ['route' => 'dashboard', 'text' => 'Dashboard'],
+                    ['route' => 'boxes.getAll', 'text' => 'Mes boxes'],
+                    ['route' => 'tenants.getAll', 'text' => 'Mes locataires'],
+                ]
+            ])
 
             <!-- Page Heading -->
             @isset($header)
