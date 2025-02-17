@@ -3,15 +3,15 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Boxes;
+use App\Models\Tenants;
 
-class BoxesSeeder extends Seeder
+class TenantsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Boxes::factory(20)->create();
+        Tenants::factory(20)->create();
     }
 }
