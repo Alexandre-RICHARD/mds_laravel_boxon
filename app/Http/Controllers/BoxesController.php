@@ -72,7 +72,7 @@ class BoxesController extends Controller
         $boxToUpdate = Boxes::findOrFail($boxToUpdateId);
 
         if ($boxToUpdate->user_id !== Auth::id()) {
-            return redirect()->back()->with('error', 'Vous n\'êtes pas autorisé à modifier cette box.');
+            return redirect()->back()->with('error', 'Vous n\'êtes pas autorisé à modifier ce box.');
         }
         
         $validatedData = $request->validate([
@@ -84,5 +84,22 @@ class BoxesController extends Controller
         $boxToUpdate->update($validatedData);
 
         return redirect()->back()->with('success', 'Box mise à jour avec succès !');
+    }
+
+    /**
+     * Delete one box
+    */    
+    public function delete(Request $request)
+    {
+        $boxToDeleteId = $request->route('id');;
+        $boxToDelete = Boxes::findOrFail($boxToDeleteId);
+
+        if ($boxToDelete->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Vous n\'êtes pas autorisé à supprimer ce box.');
+        }
+        
+        $boxToDelete->delete();
+
+        return redirect()->back()->with('success', 'Box supprimé avec succès !');
     }
 }
