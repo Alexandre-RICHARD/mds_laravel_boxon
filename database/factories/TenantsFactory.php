@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class TenantsFactory extends Factory
 {
+    protected $model = \App\Models\Tenants::class;
     /**
      * Define the model's default state.
      *
