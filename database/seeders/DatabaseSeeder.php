@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             TenantsSeeder::class,
             ContractModelsSeeder::class,
             ContractsSeeder::class,
+            BillsSeeder::class,
         ]);
     }
 }
