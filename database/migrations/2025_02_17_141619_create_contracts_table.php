@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('box_id')->constrained('boxes')->onDelete('cascade');
             $table->foreignId('tenant_id')->constrained('tenants')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('contract_model_id')->constrained('contract_models')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -9,6 +9,8 @@ Route::middleware('auth')->group(function () {
     Route::post('contracts/create', [ContractsController::class, 'create'])->name('contracts.create');
     Route::put('contracts/update/id/{id}', [ContractsController::class, 'update'])->name('contracts.update');
     Route::delete('contracts/delete/id/{id}', [ContractsController::class, 'delete'])->name('contracts.delete');
+
+    Route::get('/contracts/download/id/{id}', [ContractsController::class, 'downloadContract'])->name('contracts.download');
 });
 
 require __DIR__.'/auth.php';

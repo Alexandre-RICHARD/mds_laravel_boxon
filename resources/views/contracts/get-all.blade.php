@@ -31,6 +31,7 @@
             <div>
                 <x-input-label for="box_id" :value="__('Box')" />
                 <select id="box_id" name="box_id" class="mt-1 block w-full border-gray-300 rounded-lg" required>
+                    <option value="" disabled selected hidden>Choisissez un box</option>
                     @foreach ($boxes as $box)
                         <option value="{{ $box->id }}">{{ $box->adress }} - {{ $box->size }}m²</option>
                     @endforeach
@@ -40,11 +41,22 @@
             <div>
                 <x-input-label for="tenant_id" :value="__('Locataire')" />
                 <select id="tenant_id" name="tenant_id" class="mt-1 block w-full border-gray-300 rounded-lg" required>
+                    <option value="" disabled selected hidden>Choisissez un locataire</option>
                     @foreach ($tenants as $tenant)
                         <option value="{{ $tenant->id }}">{{ $tenant->name }} - {{ $tenant->email }}</option>
                     @endforeach
                 </select>
                 <x-input-error class="mt-2" :messages="$errors->get('tenant_id')" />
+            </div>
+            <div>
+                <x-input-label for="contract_model_id" :value="__('Modèle de contrat')" />
+                <select id="contract_model_id" name="contract_model_id" class="mt-1 block w-full border-gray-300 rounded-lg" required>
+                    <option value="" disabled selected hidden>Choisissez un modèle de contrat</option>
+                    @foreach ($contractModels as $contractModel)
+                        <option value="{{ $contractModel->id }}">{{ $contractModel->name }}</option>
+                    @endforeach
+                </select>
+                <x-input-error class="mt-2" :messages="$errors->get('contract_model_id')" />
             </div>
             <div class="flex items-center gap-4">
                 <x-primary-button>{{ __('Créer le contrat') }}</x-primary-button>
@@ -75,6 +87,7 @@
                         <th class="border border-gray-300 px-4 py-2">Prix mensuel (€)</th>
                         <th class="border border-gray-300 px-4 py-2">Box</th>
                         <th class="border border-gray-300 px-4 py-2">Locataire</th>
+                        <th class="border border-gray-300 px-4 py-2">Modèle de contrat</th>
                         <th class="border border-gray-300 px-4 py-2">Actions</th>
                     </tr>
                 </thead>
@@ -88,6 +101,7 @@
                                 monthly_price: @js($contract->monthly_price),
                                 box_id: @js($contract->box_id),
                                 tenant_id: @js($contract->tenant_id),
+                                contract_model_id: @js($contract->contract_model_id),
 
                             }"
                             class="border border-gray-300"
@@ -121,11 +135,21 @@
                             </td>
                             <td class="border border-gray-300 px-4 py-2">
                                 <a x-show="!editing" href="{{ route('tenants.getOne', ['id' => $contract->tenant_id]) }}" class="text-blue-600 hover:underline">
-                                    {{ $tenants->firstWhere('id', $contract->tenant_id)->name }}
+                                    {{ $tenants->firstWhere('id', $contract->tenant_id)?->name ?? 'Non attribué' }}
                                 </a>
                                 <select x-show="editing" x-model="tenant_id" id="tenant_id" name="tenant_id" class="mt-1 block w-full border-gray-300 rounded-lg" required>
                                     @foreach ($tenants as $tenant)
                                         <option value="{{ $tenant->id }}">{{ $tenant->name }} - {{ $tenant->email }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td class="border border-gray-300 px-4 py-2">
+                                <a x-show="!editing" href="{{ route('contractModels.getOne', ['id' => $contract->contract_model_id]) }}" class="text-blue-600 hover:underline">
+                                    {{ $contractModels->firstWhere('id', $contract->contract_model_id)->name }}
+                                </a>
+                                <select x-show="editing" x-model="contract_model_id" id="contract_model_id" name="contract_model_id" class="mt-1 block w-full border-gray-300 rounded-lg" required>
+                                    @foreach ($contractModels as $contractModel)
+                                        <option value="{{ $contractModel->id }}">{{ $contractModel->name }}</option>
                                     @endforeach
                                 </select>
                             </td>
@@ -139,6 +163,7 @@
                                     <input type="hidden" name="monthly_price" x-model="monthly_price">
                                     <input type="hidden" name="box_id" x-model="box_id">
                                     <input type="hidden" name="tenant_id" x-model="tenant_id">
+                                    <input type="hidden" name="contract_model_id" x-model="contract_model_id">
                                     <button type="submit" class="text-green-600 hover:underline">Enregistrer</button>
                                     <button type="button" @click="editing = false" class="text-red-600 hover:underline">Annuler</button>
                                 </form>
@@ -147,6 +172,9 @@
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:underline">Supprimer</button>
                                 </form>
+                                <a x-show="!editing" href="{{ route('contracts.download', ['id' => $contract->id]) }}" class="btn btn-primary text-gray-700">
+                                    Télécharger
+                                </a>
                             </td>
                         </tr>
                     @endforeach
