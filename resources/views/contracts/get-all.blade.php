@@ -172,7 +172,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:underline">Supprimer</button>
                                 </form>
-                                <a x-show="!editing" href="{{ route('contracts.download', ['id' => $contract->id]) }}" class="btn btn-primary text-gray-700">
+                                <a x-show="!editing" href="{{ route('contracts.download', $contract->id) }}" target="_blank" class="btn btn-primary text-gray-700">
                                     Télécharger
                                 </a>
                             </td>

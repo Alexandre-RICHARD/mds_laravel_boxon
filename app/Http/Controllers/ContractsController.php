@@ -120,12 +120,12 @@ class ContractsController extends Controller
     /**
      * Download one contracts
     */  
-    public function downloadContract($contractId)
+    public function downloadContract($id)
     {
-        $contract = Contracts::findOrFail($contractId);
+        $contract = Contracts::findOrFail($id);
         $contractModel = ContractModels::findOrFail($contract->contract_model_id);
         $tenant = Tenants::findOrFail($contract->tenant_id);
-        $box = Tenants::findOrFail($contract->box_id);
+        $box = Boxes::findOrFail($contract->box_id);
         $owner = User::findOrFail($contract->user_id);
 
         $data = [
@@ -143,6 +143,9 @@ class ContractsController extends Controller
         }, $contractModel->content);
 
         $pdf = Pdf::loadHTML(nl2br(e($contractFilled)));
-        return $pdf->download('contrat.pdf');
+        return response($pdf->stream("contrat.pdf"), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="facture.pdf"',
+        ]);
     }
 }

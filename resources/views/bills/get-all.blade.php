@@ -21,6 +21,7 @@
                     <th class="border px-4 py-2">Période</th>
                     <th class="border px-4 py-2">Numéro de période</th>
                     <th class="border px-4 py-2">Contrat ID</th>
+                    <th class="border px-4 py-2">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +39,16 @@
                         <td class="border px-4 py-2">{{ \Carbon\Carbon::parse($bill->bills_period)->format('d/m/Y') }}</td>
                         <td class="border px-4 py-2">{{ $bill->period_number }}</td>
                         <td class="border px-4 py-2">{{ $bill->contract_id }}</td>
+                        <td class="border border-gray-300 px-4 py-2 space-x-2">
+                            @if (!$bill->paiement_date)
+                                <form method="POST" action="{{ route('bills.pay', $bill->id) }}">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="text-blue-600 hover:underline">Marquer comme payé</button>
+                                </form>
+                            @endif
+                            <a href="{{ route('bills.download', $bill->id) }}" target="_blank" class="text-gray-600 hover:underline">Télécharger</a>
+                        </td>
                     </tr>
                 @empty
                     <tr>
