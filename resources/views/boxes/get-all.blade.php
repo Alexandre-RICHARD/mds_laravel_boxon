@@ -107,7 +107,7 @@
                                     <button type="submit" class="text-green-600 hover:underline">Enregistrer</button>
                                     <button type="button" @click="editing = false" class="text-red-600 hover:underline">Annuler</button>
                                 </form>
-                                <form method="POST" action="{{ route('boxes.delete', ['id' => $box->id]) }}" class="inline" onsubmit="return confirm('Confirmer la suppression ?');">
+                                <form x-show="!editing" method="POST" action="{{ route('boxes.delete', ['id' => $box->id]) }}" class="inline" onsubmit="return confirm('Confirmer la suppression ?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:underline">Supprimer</button>
