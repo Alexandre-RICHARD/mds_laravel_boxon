@@ -11,7 +11,7 @@ CECI
 5. Créer le fichier `database\database.sqlite`
 6. `php artisan migrate:fresh --seed`
 7. `php artisan serve` si utilisé de cette manière, sinon [http://localhost]
-8. Identifiants : `kevin.niel@gmail.com` et `password`
+8. URL du VPS et projet hébergé : `http://vps-a8001986.vps.ovh.net/` | Identifiants : `kevin.niel@gmail.com` et `password`
 
 ## Les fonctionnalités
 
