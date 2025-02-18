@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             BoxesSeeder::class,
             TenantsSeeder::class,
             ContractModelsSeeder::class,
+            ContractsSeeder::class,
         ]);
     }
 }
