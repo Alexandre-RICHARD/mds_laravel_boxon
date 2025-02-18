@@ -19,10 +19,11 @@
             @include('layouts.navigation', [
                 'links' => [
                     ['route' => 'dashboard', 'text' => 'Dashboard'],
-                    ['route' => 'boxes.getAll', 'text' => 'Mes boxes'],
-                    ['route' => 'tenants.getAll', 'text' => 'Mes locataires'],
+                    ['route' => 'boxes.getAll', 'text' => 'Boxes'],
+                    ['route' => 'tenants.getAll', 'text' => 'Locataires'],
                     ['route' => 'contracts.getAll', 'text' => 'Contrats'],
                     ['route' => 'contractModels.getAll', 'text' => 'Modèles de contrats'],
+                    ['route' => 'bills.getAll', 'text' => 'Factures'],
                 ]
             ])
 
