@@ -12,6 +12,6 @@ class BoxesSeeder extends Seeder
      */
     public function run(): void
     {
-        Boxes::factory(20)->create();
+        Boxes::factory(100)->create();
     }
 }

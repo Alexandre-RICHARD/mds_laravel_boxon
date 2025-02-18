@@ -6,5 +6,6 @@
         <p><strong>Loyer mensuel :</strong> {{ $contract->monthly_price }}</p>
         <p><strong>N° du box :</strong> {{ $contract->box_id }}</p>
         <p><strong>N° du locataire :</strong> {{ $contract->tenant_id }}</p>
+        <p><strong>N° du modèle de contrat :</strong> {{ $contract->contract_model_id }}</p>
     </div>
 </x-custom-layout>
