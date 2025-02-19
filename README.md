@@ -1,12 +1,92 @@
 **Le but n'est pas forcément de tout terminer**, mais d'aller le plus loin possible pour chacun.
 
+# Pour tester
+URL du VPS et projet hébergé : `http://vps-a8001986.vps.ovh.net/`
+Identifiants : `kevin.niel@gmail.com` et `password`
+Identifiants 2 : `alexandre.richard@gmail.com` et `password`
+
+# Ce qui n'est pas fait
+- Bouton pour génération des factures du mois ou générations auto
+- Envoi de mail quelconque
+- Suivi des impots
+- Certaines exports
+- Bonus
+- Super bonus
+- Ultra bonus
+- Les routes sont souvent en sujet/actions/id/{id}, c'est pas le mieux
+
 # Pour tester si Pas la flemme
 1. `git clone https://github.com/Alexandre-RICHARD/mds_laravel_boxon.git` 
 2. `composer i`
 3. `npm i`
 4. Création du `.env` avec comme contenu ceci
 ```
-CECI
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:ZsPV5GaKHpuaze/5EMGKmma3e1YXpNeLG2MQOQ4T+7U=
+APP_DEBUG=true
+APP_TIMEZONE=UTC
+APP_URL=http://localhost
+
+APP_LOCALE=en
+APP_FALLBACK_LOCALE=en
+APP_FAKER_LOCALE=en_US
+
+APP_MAINTENANCE_DRIVER=file
+# APP_MAINTENANCE_STORE=database
+
+PHP_CLI_SERVER_WORKERS=4
+
+BCRYPT_ROUNDS=12
+
+LOG_CHANNEL=stack
+LOG_STACK=single
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
+
+DB_CONNECTION=sqlite
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=laravel
+# DB_USERNAME=root
+# DB_PASSWORD=
+
+SESSION_DRIVER=database
+SESSION_LIFETIME=120
+SESSION_ENCRYPT=false
+SESSION_PATH=/
+SESSION_DOMAIN=null
+
+BROADCAST_CONNECTION=log
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=database
+
+CACHE_STORE=database
+CACHE_PREFIX=
+
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_CLIENT=phpredis
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=log
+MAIL_SCHEME=null
+MAIL_HOST=127.0.0.1
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
+
+VITE_APP_NAME="${APP_NAME}"
 ```
 5. Créer le fichier `database\database.sqlite`
 6. `php artisan migrate:fresh --seed`
